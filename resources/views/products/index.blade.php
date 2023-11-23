@@ -8,7 +8,10 @@
             <h6 class="m-0 font-weight-bold text-primary">Data product</h6>
         </div>
         <div class="card-body">
-            <a href="" class="btn btn-primary mb-3">Add product</a>
+            @if (auth()->user()->level == 'Admin')
+                <a href="{{ route('products.add') }}" class="btn btn-primary mb-3">Add product</a>
+            @endif
+
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -18,9 +21,28 @@
                             <th>name product</th>
                             <th>Category</th>
                             <th>Price</th>
-                            <th>Action</th>
+                            @if (auth()->user()->level == 'Admin')
+                                <th>Action</th>
+                            @endif
+                            
                         </tr>
                     </thead>
+                    <tbody>
+                        @php($no = 1)
+                        @foreach ($data as $row)
+                            <tr>
+                                <th>{{ $no++ }}</th>
+                                <td>{{ $row->item_code }}</td>
+                                <td>{{ $row->productname }}</td>
+                                <td>{{ $row->category }}</td>
+                                <td>{{ $row->price}}</td>
+                                <td>
+                                    <a href="" class="btn btn-warning">Edit</a>
+                                    <a href="" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
