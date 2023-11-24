@@ -36,10 +36,12 @@
                                 <td>{{ $row->productname }}</td>
                                 <td>{{ $row->category }}</td>
                                 <td>{{ $row->price}}</td>
+                                @if (auth()->user()->level == 'Admin')
                                 <td>
-                                    <a href="" class="btn btn-warning">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('products.edit', $row->id) }}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('products.delete', $row->id) }}" class="btn btn-danger">Delete</a>
                                 </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

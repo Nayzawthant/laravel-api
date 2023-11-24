@@ -24,11 +24,13 @@
             <span>Products</span></a>
     </li>
 
+    @if (auth()->user()->level == 'Admin')
     <li class="nav-item active">
         <a class="nav-link" href="/category">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Category</span></a>
     </li>
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider">

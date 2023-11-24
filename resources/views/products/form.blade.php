@@ -3,7 +3,7 @@
 @section('title', 'Form products')
 
 @section('contents')
-    <form action="" method="post">
+    <form action="{{ isset($product) ? route('products.update', $product->id) : route('products.save') }}" method="post">
         @csrf
         <div class="row">
             <div class="col-12">
@@ -14,21 +14,22 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="item_code">code product</label>
-                            <input type="text" class="form-control" id="item_code" name="item_code" value="">
+                            <input type="text" class="form-control" id="item_code" name="item_code" value="{{ isset($product) ? $product->item_code : '' }}">
                         </div>
                         <div class="form-group">
                             <label for="productname">Name product</label>
-                            <input type="text" class="form-control" id="productname" name="productname" value="">
+                            <input type="text" class="form-control" id="productname" name="productname" value="{{ isset($product) ? $product->productname : ''}}">
                         </div>
                         <div class="form-group">
                             <label for="id_category">Category product</label>
                             <select name="id_category" id="id_category" class="custom-select">
                                 <option value="" selected disabled hidden>-- Choose Category --</option>
+                                <option value="{{ isset($product) ? $product->category : '' }}"> {{ isset($product) ? $product->category : ''}}</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="price">price product</label>
-                            <input type="number" class="form-control" id="price" name="price" value="">
+                            <input type="number" class="form-control" id="price" name="price" value="{{ isset($product) ? $product->price : '' }}">
                         </div>
                     </div>
                     <div class="card-footer">
