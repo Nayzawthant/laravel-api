@@ -49,6 +49,8 @@ Route::middleware('auth')->group(function () {
         Route::get('add', 'add')->name('category.add');
         Route::post('save', 'save')->name('category.save');
         Route::get('edit/{id}', 'edit')->name('category.edit');
+        Route::post('edit/{id}', 'update')->name('category.update');
+        Route::get('delete/{id}', 'delete')->name('category.delete');
     });
 });
 

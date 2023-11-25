@@ -26,7 +26,7 @@
                                 <td>{{ $row->name }}</td>
                                 <td>
                                     <a href="{{ route('category.edit', $row->id) }}" class="btn btn-warning">Edit</a>
-                                    <a href="Delete" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('category.delete', $row->id) }}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -32,4 +32,20 @@ class CategoryController extends Controller
         // echo "$category";
         return view('category.form', ['category' => $category]);
     }
+
+    public function update($id, Request $request)
+    {
+        $data = ['name' => $request->name];
+
+        category::find($id)->update($data);
+
+        return redirect()->route('category');
+    }
+
+    public function delete($id)
+    {
+        category::find($id)->delete();
+
+        return redirect()->route('category');
+    }
 }
